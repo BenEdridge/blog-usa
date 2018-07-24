@@ -9,7 +9,7 @@ tags:
 - Greengrass
 date: 2018-07-19T11:41:57.000Z
 title: "Exploring AWS IoT Core and Greengrass Offerings"
-image: https://raw.githubusercontent.com/ippontech/blog-usa/master/images/2018/07/aws_iot_esp_device.jpeg
+image: https://raw.githubusercontent.com/benedridge/blog-usa/master/images/2018/07/aws_iot_esp_device.jpeg
 ---
 
 According to [IEEE](https://iot.ieee.org/newsletter/march-2017/three-major-challenges-facing-iot.html) the biggest challenges and issues facing Internet of Things (IoT) are security, privacy, connectivity, compatibility, standardisation and intelligent actions/analysis. This is what is holding us back from world-wide developments in IoT. A number of recent academic research [papers](https://ieeexplore.ieee.org/abstract/document/7823334/) have discussed the security and privacy aspects of IoT deployments. 
@@ -24,7 +24,7 @@ In this two-part series I will look at the AWS services provided for IoT and the
 
 The ESP device will be connected to a DHT11 temperature and humidity sensor sending data to AWS over the MQTT protocol to "IoT Core". This will update the "Device Shadows" within "IoT Core". "Rules" will also be created to select information from the JSON structure of MQTT messages received and carry out "Actions". The action performed will be saving the data to S3. Once an ESP device is connected and data is being output the Android application can connect to IoT Core to access Shadow states containing device metadata and current sensor data.
 
-![Overview of the idealised IoT POC infrastructure](https://raw.githubusercontent.com/ippontech/blog-usa/master/images/2018/07/aws_iot_idealised_poc.png)
+![Overview of the idealised IoT POC infrastructure](https://raw.githubusercontent.com/benedridge/blog-usa/master/images/2018/07/aws_iot_idealised_poc.png)
 
 _The source code will be available in the part 2 blog post. Note: Resource usage on AWS will charge your account._
 
@@ -38,7 +38,7 @@ To enable data storage and updates we need to be securely and reliably connected
 
 AWS provides a hub like [infrastructure](https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html) which incorporates IoT devices as "[Things](https://docs.aws.amazon.com/iot/latest/developerguide/iot-thing-management.html)" in the network. "[Device Shadows](https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html)" are the core data structure which store a devices state. This state along with additional messages are sent over MQTT network protocol. A shadow is simply a JSON document containing the expected and delta of a devices state. These devices are categorised into either control/management devices called a “Greengrass Core” or lower powered device called a “Thing” which interacts with “Cores” within a Greengrass group using the AWS SDK. The terminology is somewhat confusing with “Greengrass cores”, “Greengrass groups”, “IoT core”, “Things” etc. A Greengrass core is not needed to set up IoT devices but gives added benefits such as OTA updates and local Lambda functions. The diagram below will hopefully explain the structure of AWS IoT offerings. Things are split across both Greengrass groups and normal IoT groups. To setup a Greengrass group you must select a "Thing" to act as the core. The Greengrass core daemon then needs to be installed locally on the device.
 
-![Core AWS IoT infrastructure](https://raw.githubusercontent.com/ippontech/blog-usa/master/images/2018/07/aws_iot_overview.png)
+![Core AWS IoT infrastructure](https://raw.githubusercontent.com/benedridge/blog-usa/master/images/2018/07/aws_iot_overview.png)
 
 The lower powered devices acting at the edge usually have a CPU less than 1Ghz, interact with sensors and run in a limited environment. The “Greengrass Core” has a custom “Greengrass” daemon and a number of versions depending on the platform. There is support for Raspberry Pi, EC2, x86 and Arm. The lower powered “Thing” devices can also use [AWS RTOS](https://aws.amazon.com/freertos/), AWS SDKs or the REST API to interact with IoT services. 
 
@@ -173,7 +173,7 @@ Timer.set(2000, Timer.REPEAT, function() {
 - It’s quite a lot more complicated than originally put forward by AWS and my preconceptions about the services.
     - I have yet to explore Cloudformation and Terraform deeply but I could imagine there might be some inefficiencies in stack deployment.
 
-![Solving the challenges of IoT with AWS](https://raw.githubusercontent.com/ippontech/blog-usa/master/images/2018/07/solving_aws_challenges.png)
+![Solving the challenges of IoT with AWS](https://raw.githubusercontent.com/benedridge/blog-usa/master/images/2018/07/solving_aws_challenges.png)
 
 # How do other Cloud providers compare?
 
